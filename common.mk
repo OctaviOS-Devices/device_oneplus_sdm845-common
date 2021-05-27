@@ -23,7 +23,7 @@ $(call inherit-product, vendor/oneplus/sdm845-common/sdm845-common-vendor.mk)
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-ssos
+    $(LOCAL_PATH)/overlay-octavi
 
 PRODUCT_PACKAGES += \
     OnePlusIconShapeCircleOverlay \
@@ -98,8 +98,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/com.google.android.GoogleCamera.Urnyx.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.google.android.GoogleCamera.Urnyx.xml
 
 # Component overrides
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/bluetooth/component-overrides_qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/component-overrides.xml
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/configs/bluetooth/component-overrides_qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/component-overrides.xml
 
 # Common init scripts
 PRODUCT_PACKAGES += \
@@ -162,6 +162,13 @@ PRODUCT_PACKAGES += \
     Tag \
     vendor.nxp.nxpese@1.0:64 \
     vendor.nxp.nxpnfc@1.0:64
+    
+# OnePlus
+PRODUCT_PACKAGES += \
+    oneplus-fwk.oneplus_sdm845
+
+PRODUCT_BOOT_JARS += \
+    oneplus-fwk.oneplus_sdm845
 
 # Power
 PRODUCT_PACKAGES += \
@@ -195,8 +202,9 @@ PRODUCT_BOOT_JARS += \
 
 # Touch
 PRODUCT_PACKAGES += \
-    lineage.touch@1.0-service.oneplus_sdm845
-
+    lineage.touch@1.0-service.oneplus_sdm845 \
+    TouchGestures
+    
 # tri-state-key
 PRODUCT_PACKAGES += \
     tri-state-key_daemon
@@ -226,6 +234,6 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-wfd.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-wfd.xml
 
-# ShapeShift specific properties
+# OctaviOS specific properties
 PRODUCT_PRODUCT_PROPERTIES += \
-  ro.ssos.cpu=SDM845
+  ro.octavi.cpu=SDM845
