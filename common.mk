@@ -80,6 +80,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/android.hardware.camera.provider@2.4-service.rc:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/init/android.hardware.camera.provider@2.4-service.rc
 
+# Board platform
+PRODUCT_BOARD_PLATFORM := sdm845
+PRODUCT_USES_QCOM_HARDWARE := true
+
 # Boot control
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl.recovery \
@@ -98,8 +102,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/com.google.android.GoogleCamera.Urnyx.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.google.android.GoogleCamera.Urnyx.xml
 
 # Component overrides
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/configs/bluetooth/component-overrides_qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/component-overrides.xml
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/bluetooth/component-overrides_qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/component-overrides.xml
 
 # Common init scripts
 PRODUCT_PACKAGES += \
@@ -123,6 +127,11 @@ PRODUCT_PACKAGES += \
 # Doze
 PRODUCT_PACKAGES += \
     OnePlusDoze
+
+# HALS
+SRC_AUDIO_HAL_DIR := hardware/qcom-caf/sdm845/audio
+SRC_DISPLAY_HAL_DIR := hardware/qcom-caf/sdm845/display
+SRC_MEDIA_HAL_DIR := hardware/qcom-caf/sdm845/media
 
 # HIDL
 PRODUCT_PACKAGES += \
@@ -182,10 +191,9 @@ PRODUCT_PACKAGES += \
     RemovePackages
 
 # Soong namespaces
-PRODUCT_BOARD_PLATFORM := sdm845
-PRODUCT_USES_QCOM_HARDWARE := true
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+    $(LOCAL_PATH) \
+    hardware/qcom-caf/sdm845
 
 # Telephony
 PRODUCT_PACKAGES += \
