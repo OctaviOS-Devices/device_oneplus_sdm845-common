@@ -97,11 +97,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/com.google.android.GoogleCamera.Urnyx.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.google.android.GoogleCamera.Urnyx.xml
 
-# Component overrides
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/bluetooth/component-overrides_qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/component-overrides.xml
-    
-    # Camera HIDL
+# Camera HIDL
 PRODUCT_PACKAGES += \
     vendor.oneplus.camera.CameraHIDL@1.0 \
     vendor.oneplus.camera.CameraHIDL@1.0-adapter-helper \
@@ -176,8 +172,8 @@ PRODUCT_PACKAGES += \
     Tag \
     vendor.nxp.nxpese@1.0:64 \
     vendor.nxp.nxpnfc@1.0:64
-    
-    # OnePlus
+
+# OnePlus-fwk
 PRODUCT_PACKAGES += \
     oneplus-fwk.oneplus_sdm845
 
